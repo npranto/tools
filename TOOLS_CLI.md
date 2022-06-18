@@ -18,7 +18,7 @@ tools --help
 
 ## Usage
 
-```md
+```
 Usage: tools [options] [command]
 
 Options:
@@ -26,9 +26,10 @@ Options:
 
 Commands:
 setup-husky
-Installs up husky and sets up git hooks with it
-
-BEFORE YOU RUN: - only run this command from the root of your project, otherwise husky may not setup properly
+	Installs up husky and sets up git hooks with it
+	
+	BEFORE YOU RUN: 
+	- only run this command from the root of your project, otherwise husky may not setup properly
 
 help [command] display help for command
 ```
