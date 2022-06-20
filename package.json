@@ -1,6 +1,6 @@
 {
 	"name": "@npranto/tools",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "A list of reusable, useful scripts and functions",
 	"main": "index.js",
 	"bin": {
@@ -35,6 +35,6 @@
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-import": "^2.26.0",
 		"husky": "^8.0.1",
-		"prettier": "^2.6.2"
+		"prettier": "^2.7.1"
 	}
 }
