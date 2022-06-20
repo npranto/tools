@@ -1,40 +1,40 @@
 {
-  "name": "@npranto/tools",
-  "version": "1.0.1",
-  "description": "A list of reusable, useful scripts and functions",
-  "main": "index.js",
-  "bin": {
-    "tools": "./index.js"
-  },
-  "scripts": {
-    "lint": "npx eslint ./",
-    "format": "npx prettier --write ."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/npranto/tools.git"
-  },
-  "keywords": [
-    "tools",
-    "@npranto"
-  ],
-  "author": "Nazmuz Pranto <npranto@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/npranto/tools/issues"
-  },
-  "homepage": "https://github.com/npranto/tools#readme",
-  "dependencies": {
-    "chalk": "^4.0.0",
-    "commander": "^9.3.0",
-    "inquirer": "^8.2.4"
-  },
-  "devDependencies": {
-    "eslint": "^8.18.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "husky": "^8.0.1",
-    "prettier": "^2.7.1"
-  }
+	"name": "@npranto/tools",
+	"version": "1.0.1",
+	"description": "A list of reusable, useful scripts and functions",
+	"main": "index.js",
+	"bin": {
+		"tools": "./index.js"
+	},
+	"scripts": {
+		"lint": "npx eslint ./",
+		"format": "npx prettier --write ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/npranto/tools.git"
+	},
+	"keywords": [
+		"tools",
+		"@npranto"
+	],
+	"author": "Nazmuz Pranto <npranto@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/npranto/tools/issues"
+	},
+	"homepage": "https://github.com/npranto/tools#readme",
+	"dependencies": {
+		"chalk": "^4.0.0",
+		"commander": "^9.3.0",
+		"inquirer": "^8.2.4"
+	},
+	"devDependencies": {
+		"eslint": "^8.18.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-import": "^2.26.0",
+		"husky": "^8.0.1",
+		"prettier": "^2.7.1"
+	}
 }

@@ -1,17 +1,9 @@
-const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const installPackage = require('./installPackage');
 const doesFileExist = require('./doesFileExist');
 const getPackageJSON = require('./getPackageJSON');
-
-function writeToFile(filePath, content = '') {
-	try {
-		fs.writeFileSync(filePath, content);
-	} catch (err) {
-		console.error(err);
-	}
-}
+const writeToFile = require('./writeToFile');
 
 const DEFAULT_PRETTIER_CONFIG = {
 	trailingComma: 'all',
@@ -90,21 +82,10 @@ async function addFormatScript() {
 
 const setupPrettier = async () => {
 	console.log(chalk.green.bold('👉 Setting up prettier...'));
-
-	// TODO:
-	// - install prettier package as a devDependency
 	await installPackage('prettier', '2.7.1', true);
-	// - adds \`.prettierrc\` file w/ default configurations
-
 	await addDefaultPrettierConfig();
-
 	await addDefaultPrettierIgnore();
-
-	// - adds \`.prettierrc\` with default ignore files
-	// - adds \`format\` npm script inside package.json file to auto formats all the files w/in your project
-
 	await addFormatScript();
-
 	console.log(chalk.green.bold('✅ Success! Prettier is setup now!'));
 };
 
