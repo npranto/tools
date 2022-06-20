@@ -10,8 +10,8 @@ const addGitHook = async (hook) => {
 	if (doesFileExist(gitHookPath)) {
 		console.log(
 			chalk.gray.bold(
-				`(ℹ) Looks like \`${hook}\` git hook is already setup, skipping`
-			)
+				`(ℹ) Looks like \`${hook}\` git hook is already setup, skipping`,
+			),
 		);
 		return;
 	}

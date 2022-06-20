@@ -4,8 +4,8 @@ const addGitHook = require('./addGitHook');
 const addAllGitHook = async () => {
 	console.log(
 		chalk.gray.bold(
-			`> Setting up following git hooks w/ husky: applypatch-msg, pre-push, commit-msg, pre-rebase, post-update, prepare-commit-msg, pre-applypatch, update, pre-commit`
-		)
+			`> Setting up following git hooks w/ husky: applypatch-msg, pre-push, commit-msg, pre-rebase, post-update, prepare-commit-msg, pre-applypatch, update, pre-commit`,
+		),
 	);
 	await addGitHook('applypatch-msg');
 	await addGitHook('pre-push');
