@@ -1,6 +1,6 @@
 {
 	"name": "@npranto/tools",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A list of reusable, useful scripts and functions",
 	"main": "index.js",
 	"bin": {
