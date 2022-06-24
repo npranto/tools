@@ -22,19 +22,21 @@ tools --help
 Usage: tools [options] [command]
 
 Options:
-  -h, --help                display help for command
+  -h, --help          display help for command
 
 Commands:
-  setup-husky
+  husky [options]
   		 WHAT IT DOES:
   		 - Installs prettier package as a devDependency
   		 - Initializes `git init`
   		 - Setups up all the git hooks w/ husky
 
+  		 -R, --remove (removes all husky setup from current project)
+
   		 BEFORE YOU RUN:
   		 - only run this command from the root of your project, otherwise husky may not setup properly
 
-  setup-prettier [options]
+  prettier [options]
   		 WHAT IT DOES:
   		 - Installs prettier package as a devDependency
   		 - adds `.prettierrc` file w/ default configurations
@@ -42,11 +44,12 @@ Commands:
   		 - adds `format` npm script inside package.json file to auto formats all the files w/in your project
 
   		 -C, --custom (to setup your own prettier configurations w/ a set of questionnaires)
+  		 -R, --remove (removes all prettier setup from current project)
 
   		 BEFORE YOU RUN:
   		 - only run this command from the root of your project, otherwise husky may not setup properly
 
-  help [command]            display help for command
+  help [command]      display help for command
 ```
 
 ## Development Process
