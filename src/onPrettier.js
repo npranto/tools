@@ -5,6 +5,8 @@ const installPackage = require('./installPackage');
 const doesFileExist = require('./doesFileExist');
 const getPackageJSON = require('./getPackageJSON');
 const writeToFile = require('./writeToFile');
+const removePackage = require('./removePackage');
+const removeFile = require('./removeFile');
 
 const DEFAULT_PRETTIER_CONFIG = {
 	trailingComma: 'all',
@@ -290,29 +292,105 @@ async function addFormatScript() {
 	writeToFile(packageJSONFilePath, JSON.stringify(updatedPkgJSON, null, 2));
 }
 
+async function removeFormatScript() {
+	const packageJSON = getPackageJSON();
+	const { scripts = {} } = packageJSON;
+	const packageJSONFilePath = path.join(process.cwd(), 'package.json');
+
+	if (!scripts.format) {
+		console.log(
+			chalk.gray.bold(
+				`(ℹ) Looks like \`format\` script does not exist, skipping`,
+			),
+		);
+		return;
+	}
+
+	if (scripts?.format !== 'npx prettier --write .') {
+		console.log(
+			chalk.gray.bold(
+				`(ℹ) Looks like \`format\` script has changed from default prettier command, skipping`,
+			),
+		);
+		return;
+	}
+
+	console.log(
+		chalk.gray(`> Removing \`format\` script from \`package.json\`...`),
+	);
+
+	const { format, ...restScripts } = scripts;
+	const updatedPkgJSON = {
+		...packageJSON,
+		scripts: {
+			...restScripts
+		},
+	};
+
+	writeToFile(packageJSONFilePath, JSON.stringify(updatedPkgJSON, null, 2));
+}
+
+const removePrettierConfig = async () => {
+	const prettierrcFilePath = path.join(process.cwd(), '.prettierrc');
+	if (!doesFileExist(prettierrcFilePath)) {
+		console.log(
+			chalk.gray.bold(
+				`(ℹ) Looks like \`.prettierrc\` file does not exist, skipping`,
+			),
+		);
+		return;
+	}
+	console.log(chalk.gray(`> Removing \`.prettierrc\` file...`));
+	await removeFile(path.join(process.cwd(), '.prettierrc'));
+}
+
+const removePrettierIgnore = async () => {
+	const prettierIgnoreFilePath = path.join(process.cwd(), '.prettierignore');
+	if (!doesFileExist(prettierIgnoreFilePath)) {
+		console.log(
+			chalk.gray.bold(
+				`(ℹ) Looks like \`.prettierignore\` file does not exist, skipping`,
+			),
+		);
+		return;
+	}
+	console.log(chalk.gray(`> Removing \`.prettierignore\` file...`));
+	await removeFile(path.join(process.cwd(), '.prettierignore'));
+}
+
 async function setupPrettierDefault() {
+	console.log(chalk.green.bold('👉 Setting up prettier (w/ default configurations)...'));
 	await installPackage('prettier', '2.7.1', true);
 	await addDefaultPrettierConfig();
 	await addDefaultPrettierIgnore();
 	await addFormatScript();
+	console.log(chalk.green.bold('✅ Success! Prettier is setup now!'));
 }
 
 async function setupPrettierCustom() {
+	console.log(chalk.green.bold('👉 Setting up prettier (w/ custom configurations)...'));
 	await installPackage('prettier', '2.7.1', true);
 	await addCustomPrettierConfig();
 	await addDefaultPrettierIgnore();
 	await addFormatScript();
+	console.log(chalk.green.bold('✅ Success! Prettier is setup now!'));
 }
 
-const setupPrettier = async (options = {}) => {
-	const { custom = false } = options;
-	console.log(chalk.green.bold('👉 Setting up prettier...'));
-	if (custom) {
-		await setupPrettierCustom();
-	} else {
-		await setupPrettierDefault();
-	}
-	console.log(chalk.green.bold('✅ Success! Prettier is setup now!'));
+
+async function removePrettier() {
+	console.log(chalk.green.bold('👉 Removing prettier...'));
+	await removePackage('prettier');
+	await removePrettierConfig();
+	await removePrettierIgnore();
+	await removeFormatScript();
+	console.log(chalk.green.bold('✅ Success! Prettier has been removed!'));
+}
+
+const onPrettier = (options = {}) => {
+	const { custom = false, remove = false } = options;
+	if (remove) removePrettier();
+	else if (custom) setupPrettierCustom();
+	else setupPrettierDefault();
 };
 
-module.exports = setupPrettier;
+module.exports = onPrettier;
