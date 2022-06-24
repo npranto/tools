@@ -47,7 +47,19 @@ Commands:
   		 -R, --remove (removes all prettier setup from current project)
 
   		 BEFORE YOU RUN:
-  		 - only run this command from the root of your project, otherwise husky may not setup properly
+  		 - only run this command from the root of your project, otherwise prettier may not setup properly
+
+  eslint [options]
+  		 WHAT IT DOES:
+  		 - Installs eslint package as a devDependency
+  		 - adds `.eslintrc.js` file for ESLint configuration
+  		 - adds `.eslintignore` with default ignore files
+  		 - adds `format` npm script inside package.json file to auto formats all the files w/in your project
+
+  		-R, --remove (removes all ESLint setup from current project)
+
+  		 BEFORE YOU RUN:
+  		 - only run this command from the root of your project, otherwise eslint may not setup properly
 
   help [command]      display help for command
 ```

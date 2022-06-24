@@ -1,5 +1,6 @@
 const chalk = require('chalk');
 const { program } = require('commander');
+const onESLint = require('./onESLint');
 const onHusky = require('./onHusky');
 const onPrettier = require('./onPrettier');
 
@@ -35,7 +36,7 @@ program
 		 -R, --remove (removes all prettier setup from current project)
 
 		 ${chalk.blue.bold.underline('BEFORE YOU RUN')}:
-		 - only run this command from the root of your project, otherwise husky may not setup properly
+		 - only run this command from the root of your project, otherwise prettier may not setup properly
 		`,
 	)
 	.option(
@@ -44,5 +45,24 @@ program
 	)
 	.option('-R, --remove', 'removes all prettier setup from current project')
 	.action(onPrettier);
+
+program
+	.command('eslint')
+	.description(
+		`
+		 ${chalk.blue.bold.underline('WHAT IT DOES')}:
+		 - Installs eslint package as a devDependency
+		 - adds \`.eslintrc.js\` file for ESLint configuration
+		 - adds \`.eslintignore\` with default ignore files
+		 - adds \`format\` npm script inside package.json file to auto formats all the files w/in your project
+
+		-R, --remove (removes all ESLint setup from current project)
+
+		 ${chalk.blue.bold.underline('BEFORE YOU RUN')}:
+		 - only run this command from the root of your project, otherwise eslint may not setup properly
+		`,
+	)
+	.option('-R, --remove', 'removes all ESLint setup from current project')
+	.action(onESLint);
 
 program.parse();
