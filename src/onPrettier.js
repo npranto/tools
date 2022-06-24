@@ -323,7 +323,7 @@ async function removeFormatScript() {
 	const updatedPkgJSON = {
 		...packageJSON,
 		scripts: {
-			...restScripts
+			...restScripts,
 		},
 	};
 
@@ -342,7 +342,7 @@ const removePrettierConfig = async () => {
 	}
 	console.log(chalk.gray(`> Removing \`.prettierrc\` file...`));
 	await removeFile(path.join(process.cwd(), '.prettierrc'));
-}
+};
 
 const removePrettierIgnore = async () => {
 	const prettierIgnoreFilePath = path.join(process.cwd(), '.prettierignore');
@@ -356,10 +356,12 @@ const removePrettierIgnore = async () => {
 	}
 	console.log(chalk.gray(`> Removing \`.prettierignore\` file...`));
 	await removeFile(path.join(process.cwd(), '.prettierignore'));
-}
+};
 
 async function setupPrettierDefault() {
-	console.log(chalk.green.bold('👉 Setting up prettier (w/ default configurations)...'));
+	console.log(
+		chalk.green.bold('👉 Setting up prettier (w/ default configurations)...'),
+	);
 	await installPackage('prettier', '2.7.1', true);
 	await addDefaultPrettierConfig();
 	await addDefaultPrettierIgnore();
@@ -368,14 +370,15 @@ async function setupPrettierDefault() {
 }
 
 async function setupPrettierCustom() {
-	console.log(chalk.green.bold('👉 Setting up prettier (w/ custom configurations)...'));
+	console.log(
+		chalk.green.bold('👉 Setting up prettier (w/ custom configurations)...'),
+	);
 	await installPackage('prettier', '2.7.1', true);
 	await addCustomPrettierConfig();
 	await addDefaultPrettierIgnore();
 	await addFormatScript();
 	console.log(chalk.green.bold('✅ Success! Prettier is setup now!'));
 }
-
 
 async function removePrettier() {
 	console.log(chalk.green.bold('👉 Removing prettier...'));

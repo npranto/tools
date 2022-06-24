@@ -23,7 +23,7 @@ const removeHusky = async () => {
 };
 
 const onHusky = (options = {}) => {
-	const { remove = false  } = options;
+	const { remove = false } = options;
 	if (remove) removeHusky();
 	else setupHusky();
 };

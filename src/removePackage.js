@@ -11,11 +11,7 @@ const removePackage = async (pkg) => {
 		);
 		return;
 	}
-	console.log(
-		chalk.gray.bold(
-			`> Uninstalling (${pkg}) package...`,
-		),
-	);
+	console.log(chalk.gray.bold(`> Uninstalling (${pkg}) package...`));
 	await executeCommand(`npm uninstall ${pkg}`);
 };
 

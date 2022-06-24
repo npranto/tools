@@ -18,10 +18,7 @@ program
 		 - only run this command from the root of your project, otherwise husky may not setup properly
 		`,
 	)
-	.option(
-		'-R, --remove',
-		'removes all husky setup from current project',
-	)
+	.option('-R, --remove', 'removes all husky setup from current project')
 	.action(onHusky);
 
 program
@@ -45,10 +42,7 @@ program
 		'-C, --custom',
 		'setup your own prettier configurations w/ a set of questionnaires',
 	)
-	.option(
-		'-R, --remove',
-		'removes all prettier setup from current project',
-	)
+	.option('-R, --remove', 'removes all prettier setup from current project')
 	.action(onPrettier);
 
 program.parse();
