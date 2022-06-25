@@ -3,7 +3,7 @@ name: NPM Publish
 on:
   workflow_run:
     workflows:
-      - Bump Version
+      - 'Bump Version'
     types:
       - completed
 
