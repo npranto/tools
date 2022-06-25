@@ -93,7 +93,7 @@ program
 		 -BV, --bump-version (automatically bumps patch version on merge to \`master\`)
 
 		 ${chalk.blue.bold.underline('BEFORE YOU RUN')}:
-		 - only run this command from the root of your project, otherwise editorconfig may not setup properly
+		 - only run this command from the root of your project, otherwise Github Actions workflow may not setup properly
 		`,
 	)
 	.option(
