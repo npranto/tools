@@ -2,6 +2,7 @@ const chalk = require('chalk');
 const { program } = require('commander');
 const onEditorConfig = require('./onEditorConfig');
 const onESLint = require('./onESLint');
+const onGitHubActions = require('./onGitHubActions');
 const onHusky = require('./onHusky');
 const onPrettier = require('./onPrettier');
 
@@ -80,7 +81,25 @@ program
 		`,
 	)
 	.option('-R, --remove', 'removes editorconfig from current project')
-
 	.action(onEditorConfig);
+
+program
+	.command('gh-actions')
+	.description(
+		`
+		 ${chalk.blue.bold.underline('WHAT IT DOES')}:
+			A list of GitHub Actions workflows
+
+		 -BV, --bump-version (automatically bumps patch version on merge to \`master\`)
+
+		 ${chalk.blue.bold.underline('BEFORE YOU RUN')}:
+		 - only run this command from the root of your project, otherwise editorconfig may not setup properly
+		`,
+	)
+	.option(
+		'-BV, --bump-version',
+		'automatically bumps patch version on merge to `master`',
+	)
+	.action(onGitHubActions);
 
 program.parse();
