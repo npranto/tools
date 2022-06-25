@@ -64,7 +64,26 @@ Commands:
   help [command]      display help for command
 ```
 
-## Development Process
+## For Contributors Only
+
+### Development Setup
+> Clone repository
+```sh
+git clone https://github.com/
+npranto/tools.git
+```
+> Install dependencies
+```sh
+npm install
+```
+*Note: run the above command inside the `tools` project directory*
+
+> Globally install `tools` CLI in your machine
+```sh
+npm install -g .
+``` 
+*Note: run the above command inside the `tools` project directory*
+### Development Process
 - to work on a feature or a bugfix issue, checkout the `master` branch first (locally)
 - create a new branch off of `master` - `git checkout -b tools-[ISSUE_NUMBER]`
 - once feature/bugfix is added, update `package.json` and `package-lock.json` files w/ new version update (based on major, minor or patch) 
@@ -72,7 +91,7 @@ Commands:
 - once pull request changes have been reviewed, merge the changes to `master`
 - once the changes are merged to master, create a new tag for that change (based on major, minor or patch update). Make sure to include details for new features or fix added in the change
 
-## Release Process
+### Release Process
 - checkout the tag going out for next release - `git checkout tags/[TAG_NAME]`
 - log into npm - `npm login` and enter in username, password and email
 - to publish current tag to npm, run - `npm publish --access public`
