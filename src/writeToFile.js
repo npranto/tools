@@ -1,8 +1,8 @@
-const fs = require('fs');
+const fse = require('fs-extra');
 
 function writeToFile(filePath, content = '') {
 	try {
-		fs.writeFileSync(filePath, content);
+		fse.outputFileSync(filePath, content);
 	} catch (err) {
 		console.error(err);
 	}
