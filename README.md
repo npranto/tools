@@ -22,7 +22,7 @@ tools --help
 Usage: tools [options] [command]
 
 Options:
-  -h, --help          display help for command
+  -h, --help              display help for command
 
 Commands:
   husky [options]
@@ -61,7 +61,25 @@ Commands:
   		 BEFORE YOU RUN:
   		 - only run this command from the root of your project, otherwise eslint may not setup properly
 
-  help [command]      display help for command
+  editorconfig [options]
+  		 WHAT IT DOES:
+  		 - adds `.editorconfig` file in the root level (w/ default configurations)
+
+  		 -R, --remove (removes editorconfig from current project)
+
+  		 BEFORE YOU RUN:
+  		 - only run this command from the root of your project, otherwise editorconfig may not setup properly
+
+  gh-actions [options]
+  		 WHAT IT DOES:
+  			A list of GitHub Actions workflows
+
+  		 -BV, --bump-version (automatically bumps patch version on merge to `master`)
+
+  		 BEFORE YOU RUN:
+  		 - only run this command from the root of your project, otherwise Github Actions workflow may not setup properly
+
+  help [command]          display help for command
 ```
 
 ## For Contributors Only
