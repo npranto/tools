@@ -88,8 +88,10 @@ npm install -g .
 - create a new branch off of `master` - `git checkout -b tools-[ISSUE_NUMBER]`
 - once feature/bugfix is added, commit the changes and push it up to origin to create a new pull request
 - once pull request changes have been reviewed, merge the changes to `master`
-
+- ensure that 2 GitHub actions should fire off automatically:
+  - Bump Version: https://github.com/npranto/tools/actions/workflows/bump-version.yml
+  - NPM Publish: https://github.com/npranto/tools/actions/workflows/npm-publish.yml
+Note: Both actions get kicked off at the same time
+- Verify that both actions run successfully, new tag s created w/ patch version update, and [@npranto/tools](https://www.npmjs.com/package/@npranto/tools) in packages is published w/ new version
 ### Release Process
-- checkout the tag going out for next release - `git checkout tags/[TAG_NAME]`
-- log into npm - `npm login` and enter in username, password and email
-- to publish current tag to npm, run - `npm publish --access public`
+- Fully automated. Once a PR is merged to master, package version update and publishing new version to NPM occurs automatically through GitHub actions.
