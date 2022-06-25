@@ -1,5 +1,6 @@
 const chalk = require('chalk');
 const { program } = require('commander');
+const onEditorConfig = require('./onEditorConfig');
 const onESLint = require('./onESLint');
 const onHusky = require('./onHusky');
 const onPrettier = require('./onPrettier');
@@ -64,5 +65,22 @@ program
 	)
 	.option('-R, --remove', 'removes all ESLint setup from current project')
 	.action(onESLint);
+
+program
+	.command('editorconfig')
+	.description(
+		`
+		 ${chalk.blue.bold.underline('WHAT IT DOES')}:
+		 - adds \`.editorconfig\` file in the root level (w/ default configurations)
+
+		 -R, --remove (removes editorconfig from current project)
+
+		 ${chalk.blue.bold.underline('BEFORE YOU RUN')}:
+		 - only run this command from the root of your project, otherwise editorconfig may not setup properly
+		`,
+	)
+	.option('-R, --remove', 'removes editorconfig from current project')
+
+	.action(onEditorConfig);
 
 program.parse();
