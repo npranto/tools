@@ -106,10 +106,19 @@ npm install -g .
 - create a new branch off of `master` - `git checkout -b tools-[ISSUE_NUMBER]`
 - once feature/bugfix is added, commit the changes and push it up to origin to create a new pull request
 - once pull request changes have been reviewed, merge the changes to `master`
-- ensure that 2 GitHub actions should fire off automatically:
-  - Bump Version: https://github.com/npranto/tools/actions/workflows/bump-version.yml
-  - NPM Publish: https://github.com/npranto/tools/actions/workflows/npm-publish.yml
-Note: Both actions get kicked off at the same time
-- Verify that both actions run successfully, new tag s created w/ patch version update, and [@npranto/tools](https://www.npmjs.com/package/@npranto/tools) in packages is published w/ new version
+- verify that a new tag is created w/ a patch version bump
+
 ### Release Process
-- Fully automated. Once a PR is merged to master, package version update and publishing new version to NPM occurs automatically through GitHub actions.
+To release new changes to production (NPM), we usually create draft and publish a new Release by targeting a specific tag created in history. Once the drafted release notes has been carefully reviewed and published, the [NPM Publish](https://github.com/npranto/tools/actions/workflows/npm-publish.yml) Github action will kick off automatically to publish the new version to NPM
+#### Step(s):
+1. go over to [Release](https://github.com/npranto/tools/releases) history
+2. click on "Draft a new release", to create a new release note to publish
+3. choose the tag you want to release from "Choose a tag" dropdown
+4. add "Release title", generally the tag name, i.e, "v1.0.5"
+5. add detailed description of all the features or bugfixes going into the release
+6. click on "Publish release"
+7. verify that the new release version is created in [Release](https://github.com/npranto/tools/releases) history
+8. verify that a new build for [NPM Publish](https://github.com/npranto/tools/actions/workflows/npm-publish.yml) Github action is kicked off 
+9. once the build succeeds, verify that [@npranto/tools](https://www.npmjs.com/package/@npranto/tools)'s latest version is pointing to the released version (in NPM)
+
+*Note: if the "NPM Publish" action build fails, look into the build logs, debug potential issue, fix the issue and repeat the same process from Step 1*
