@@ -30,3 +30,11 @@ jobs:
         env:
           NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
         run: echo "new tag $NEW_TAG"
+      - name: 'Create release'
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        env:
+          NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          automatic_release_tag: "$NEW_TAG"
