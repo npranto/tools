@@ -5,13 +5,15 @@ on:
     branches:
       - 'master'
       
+# on:
+#   push:
+#     tags:
+#       - 'v*'
+      
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Create GitHub release
-        uses: Roang-zero1/github-create-release-action@master
-        with:
-          version_regex: ^v[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+
+      - uses: avakar/tag-and-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
