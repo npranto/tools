@@ -2,18 +2,15 @@ name: 'Create Release'
 
 on:
   push:
-    branches:
-      - 'master'
-      
-# on:
-#   push:
-#     tags:
-#       - 'v*'
-      
+    tags:
+      - "v*"
+
 jobs:
   release:
-    runs-on: ubuntu-latest
+    name: "Release"
+    runs-on: "ubuntu-latest"
     steps:
-      - uses: avakar/tag-and-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
