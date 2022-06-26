@@ -5,12 +5,12 @@ name: 'Create Release'
 #     tags:
 #       - "v*"
 
-# on:
-#   workflow_run:
-#     workflows:
-#       - 'Bump Version'
-#     types:
-#       - completed
+on:
+  workflow_run:
+    workflows:
+      - 'Bump Version'
+    types:
+      - completed
 
 # jobs:
 #   release:
@@ -25,10 +25,10 @@ name: 'Create Release'
 
 # on: push
 
-on:  
-  push:
-    tags:
-      - '*'
+# on:  
+#   push:
+#     tags:
+#       - '*'
           
 jobs:
   release:
