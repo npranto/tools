@@ -115,10 +115,11 @@ To release new changes to production (NPM), we usually create draft and publish 
 2. click on "Draft a new release", to create a new release note to publish
 3. choose the tag you want to release from "Choose a tag" dropdown
 4. add "Release title", generally the tag name, i.e, "v1.0.5"
-5. add detailed description of all the features or bugfixes going into the release
-6. click on "Publish release"
-7. verify that the new release version is created in [Release](https://github.com/npranto/tools/releases) history
-8. verify that a new build for [NPM Publish](https://github.com/npranto/tools/actions/workflows/npm-publish.yml) Github action is kicked off 
-9. once the build succeeds, verify that [@npranto/tools](https://www.npmjs.com/package/@npranto/tools)'s latest version is pointing to the released version (in NPM)
+5. for "Previous tag" dropdown, choose the currently deployed version from NPM
+6. click on "Generate release notes" to automatically fill in details for release notes 
+7. click on "Publish release"
+8. verify that the new release version is created in [Release](https://github.com/npranto/tools/releases) history
+9.  verify that a new build for [NPM Publish](https://github.com/npranto/tools/actions/workflows/npm-publish.yml) Github action is kicked off 
+10. once the build succeeds, verify that [@npranto/tools](https://www.npmjs.com/package/@npranto/tools)'s latest version is pointing to the released version (in NPM)
 
 *Note: if the "NPM Publish" action build fails, look into the build logs, debug potential issue, fix the issue and repeat the same process from Step 1*
