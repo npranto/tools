@@ -23,7 +23,12 @@ name: 'Create Release'
 #           prerelease: false
 #           automatic_release_tag: ${{ $NEW_TAG }} 
 
-on: push
+# on: push
+
+on:  
+  push:
+    tags:
+      - '*'
           
 jobs:
   release:
