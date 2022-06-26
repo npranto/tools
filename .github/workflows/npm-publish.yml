@@ -1,15 +1,12 @@
 name: NPM Publish
-      
+
 on:
-  workflow_run:
-    workflows:
-      - 'Bump Version'
-    types:
-      - completed
+  release:
+    types: [published]
 
 jobs:
   publish-npm:
-    name: publish
+    name: 'Publish to NPM'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

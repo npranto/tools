@@ -1,4 +1,4 @@
-name: 'Bump Version'
+name: 'Create Tag'
 
 on:
   push:
@@ -6,10 +6,9 @@ on:
       - 'master'
 
 jobs:
-  bump-version:
-    name: 'Bump Version on master'
+  create-tag:
+    name: 'Bump Version + Create Tag'
     runs-on: ubuntu-latest
-
     steps:
       - name: 'Checkout source code'
         uses: 'actions/checkout@v2'
