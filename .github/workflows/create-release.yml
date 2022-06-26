@@ -4,20 +4,34 @@ name: 'Create Release'
 #   push:
 #     tags:
 #       - "v*"
-on:
-  workflow_run:
-    workflows:
-      - 'Bump Version'
-    types:
-      - completed
 
+# on:
+#   workflow_run:
+#     workflows:
+#       - 'Bump Version'
+#     types:
+#       - completed
+
+# jobs:
+#   release:
+#     name: "Release"
+#     runs-on: "ubuntu-latest"
+#     steps:
+#       - uses: "marvinpinto/action-automatic-releases@latest"
+#         with:
+#           repo_token: "${{ secrets.GITHUB_TOKEN }}"
+#           prerelease: false
+#           automatic_release_tag: ${{ $NEW_TAG }} 
+
+on: push
+          
 jobs:
   release:
-    name: "Release"
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
     steps:
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Create GitHub release
+        uses: Roang-zero1/github-create-release-action@master
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          automatic_release_tag: ${{ $NEW_TAG }}
+          version_regex: ^v[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
