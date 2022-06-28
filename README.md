@@ -22,7 +22,7 @@ tools --help
 Usage: tools [options] [command]
 
 Options:
-  -h, --help              display help for command
+  -h, --help                          display help for command
 
 Commands:
   husky [options]
@@ -70,16 +70,17 @@ Commands:
   		 BEFORE YOU RUN:
   		 - only run this command from the root of your project, otherwise editorconfig may not setup properly
 
-  gh-actions [options]
+  gh-actions [options] <addOrRemove>
   		 WHAT IT DOES:
   			A list of GitHub Actions workflows
 
-  		 -BV, --bump-version (automatically bumps patch version on merge to `master`)
+  		 -CT, --create-tag (automatically bumps patch version and creates tag on merge to `master` branch)
+  		 i.e., `tools gh-actions add --create-tag` OR `tools gh-actions remove --create-tag`
 
   		 BEFORE YOU RUN:
   		 - only run this command from the root of your project, otherwise Github Actions workflow may not setup properly
 
-  help [command]          display help for command
+  help [command]                      display help for command
 ```
 
 ## For Contributors Only
