@@ -84,21 +84,22 @@ program
 	.action(onEditorConfig);
 
 program
-	.command('gh-actions')
+	.command('gh-actions <addOrRemove>')
 	.description(
 		`
 		 ${chalk.blue.bold.underline('WHAT IT DOES')}:
 			A list of GitHub Actions workflows
 
-		 -BV, --bump-version (automatically bumps patch version on merge to \`master\`)
+		 -CT, --create-tag (automatically bumps patch version and creates tag on merge to \`master\` branch)
+		 i.e., \`tools gh-actions add --create-tag\` OR \`tools gh-actions remove --create-tag\`
 
 		 ${chalk.blue.bold.underline('BEFORE YOU RUN')}:
 		 - only run this command from the root of your project, otherwise Github Actions workflow may not setup properly
 		`,
 	)
 	.option(
-		'-BV, --bump-version',
-		'automatically bumps patch version on merge to `master`',
+		'-CT, --create-tag',
+		'automatically bumps patch version and creates tag on merge to `master` branch',
 	)
 	.action(onGitHubActions);
 
