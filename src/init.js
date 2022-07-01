@@ -1,5 +1,6 @@
 const chalk = require('chalk');
 const { program } = require('commander');
+const onCreateProject = require('./onCreateProject');
 const onEditorConfig = require('./onEditorConfig');
 const onESLint = require('./onESLint');
 const onGitHubActions = require('./onGitHubActions');
@@ -102,5 +103,26 @@ program
 		'automatically bumps patch version and creates tag on merge to `master` branch',
 	)
 	.action(onGitHubActions);
+
+program
+	.command('create project')
+	.description(
+		`
+		 ${chalk.blue.bold.underline('WHAT IT DOES')}:
+			Based on list of questionnaires, generates a project template using Vite.js
+			Ref: https://github.com/vitejs/vite/blob/main/packages/create-vite/README.md
+
+		 ${chalk.yellow.underline('Supported Templates')}:
+		 - vanilla (generates a vanilla JavaScript project w/ support for HTML, CSS and JavaScript)
+
+		 ${chalk.blue.bold.underline('BEFORE YOU RUN')}:
+		 - only run this command from the root of your project, otherwise project may not setup properly
+		`,
+	)
+	.option(
+		'-CT, --create-tag',
+		'automatically bumps patch version and creates tag on merge to `master` branch',
+	)
+	.action(onCreateProject);
 
 program.parse();
