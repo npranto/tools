@@ -34,6 +34,34 @@ const addCreateTagWorkflow = async () => {
 	);
 };
 
+const addNPMPublishWorkflow = async () => {
+	console.log(chalk.green.bold('👉 Setting up "NPM Publish" workflow...'));
+	const npmPublishFilePath = path.join(
+		process.cwd(),
+		'.github',
+		'workflows',
+		'npm-publish.yml',
+	);
+	if (doesFileExist(npmPublishFilePath)) {
+		console.log(
+			chalk.gray.bold(
+				`(ℹ) Looks like \`.github/workflows/npm-publish.yml\` file already exists, skipping`,
+			),
+		);
+		return;
+	}
+	console.log(
+		chalk.gray(`> Adding \`.github/workflows/npm-publish.yml\` file...`),
+	);
+	copySync(
+		path.join(process.cwd(), 'content/npm-publish.yml'),
+		path.join(process.cwd(), '.github/workflows/npm-publish.yml'),
+	);
+	console.log(
+		chalk.green.bold('✅ Success! "NPM Publish" workflow is setup now!'),
+	);
+};
+
 const removeCreateTagWorkflow = async () => {
 	console.log(chalk.green.bold('👉 Removing "Create Tag" workflow...'));
 	const createTagFilePath = path.join(
@@ -62,8 +90,9 @@ const removeCreateTagWorkflow = async () => {
 };
 
 const addGitHubActions = (options = {}) => {
-	const { createTag = false } = options;
+	const { createTag = false, npmPublish = false } = options;
 	if (createTag) addCreateTagWorkflow();
+	if (npmPublish) addNPMPublishWorkflow();
 };
 
 const removeGitHubActions = (options = {}) => {
