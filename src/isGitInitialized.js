@@ -2,7 +2,7 @@ const path = require('path');
 const process = require('process');
 const doesDirectoryExist = require('./doesDirectoryExist');
 
-const isGitInitialized = () =>
-	doesDirectoryExist(path.join(process.cwd(), '.git'));
+const isGitInitialized = (p = process.cwd()) =>
+	doesDirectoryExist(path.join(p, '.git'));
 
 module.exports = isGitInitialized;
